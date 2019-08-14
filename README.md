@@ -1,3 +1,32 @@
+# native compile on raspbian
+apt install raspberrypi-kernel-headers
+
+edit Makefile like this below
+
+'''
+obj-m = dht22.o
+
+KPATH=/usr/src/linux-headers-4.19.58-v7+
+PWD=$(shell pwd)
+CC=gcc
+
+all: dht22 poll
+
+dht22: dht22.c dht22.h
+	make -C $(KPATH) SUBDIRS=$(PWD) modules
+
+poll: poll.c
+	$(CC) -o poll -lc -lpthread poll.c
+
+clean:
+	rm -rf *.o *.ko .*cmd .tmp* core *.i *.mod.c modules.* Module.* poll
+'''
+
+then run make in cloned git directory will make dht22.ko
+
+to automatically load this kernel module, follow this link below
+https://askubuntu.com/questions/299676/how-to-install-3rd-party-module-so-that-it-is-loaded-on-boot
+
 # DHT22 Sensor Driver
 
 The purpose of this project is to develop a Linux Kernel Driver for `DHT22` humidity and temperature sensor. For more information of `DHT22`, read the followings link:
