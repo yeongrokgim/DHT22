@@ -3,7 +3,7 @@ apt install raspberrypi-kernel-headers
 
 edit Makefile like this below
 
-'''
+```
 obj-m = dht22.o
 
 KPATH=/usr/src/linux-headers-4.19.58-v7+
@@ -20,7 +20,7 @@ poll: poll.c
 
 clean:
 	rm -rf *.o *.ko .*cmd .tmp* core *.i *.mod.c modules.* Module.* poll
-'''
+```
 
 then run make in cloned git directory will make dht22.ko
 
