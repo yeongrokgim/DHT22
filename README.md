@@ -1,4 +1,4 @@
-# native compile on raspbian
+# native compile on raspberry pi
 apt install raspberrypi-kernel-headers
 
 edit Makefile like this below
@@ -26,6 +26,8 @@ then run make in cloned git directory will make dht22.ko
 
 to automatically load this kernel module, follow this link below
 https://askubuntu.com/questions/299676/how-to-install-3rd-party-module-so-that-it-is-loaded-on-boot
+
+tested on raspbian stretch with Raspberry Pi 2B
 
 # DHT22 Sensor Driver
 
