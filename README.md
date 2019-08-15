@@ -1,6 +1,11 @@
 # native compile on raspberry pi
 apt install raspberrypi-kernel-headers
 
+edit dht22.c file change 32 line
+#include <asm/uaccess.h>
+to
+#include <linux/uaccess.h>
+
 edit Makefile like this below
 
 ```
